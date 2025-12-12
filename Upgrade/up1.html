@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hệ thống đăng ký phòng họp — FULL + Login Whitelist + Lịch Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#9ca3af;
+      --accent:#3b82f6; --success:#22c55e; --danger:#ef4444; --warning:#f59e0b; --border:#1f2937;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;}
+    header{border-bottom:1px solid var(--border); padding:12px 16px; position:sticky; top:0; background:rgba(15,23,42,.85); backdrop-filter:blur(6px); z-index:100; display:flex; justify-content:space-between; align-items:center;}
+    header .brand{font-weight:700;}
+    /* Menu bằng NÚT */
+    #nav{display:flex; gap:8px;}
+    .nav-btn{appearance:none; border:1px solid var(--border); background:#1f2937; color:#e5e7eb; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600;}
+    .nav-btn.active{background:var(--accent); border-color:transparent; color:#fff;}
+    header .user{font-size:14px; color:var(--muted);}
+    main{padding:16px; max-width:1200px; margin:0 auto;}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px;}
+    .row{display:grid; grid-template-columns: repeat(12,1fr); gap:16px;}
+    .col-3{grid-column:span 3;} .col-4{grid-column:span 4;} .col-6{grid-column:span 6;} .col-8{grid-column:span 8;} .col-12{grid-column:span 12;}
+    .muted{color:var(--muted);} .hidden{display:none!important;}
+    label{display:block; margin-bottom:6px; font-weight:600;}
+    input,select,textarea{width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:#0b1220; color:#e5e7eb;}
+    .btn{appearance:none; border:1px solid var(--border); background:#0b1220; color:#e5e7eb; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600;}
+    .btn.primary{background:var(--accent); border-color:transparent; color:#fff;}
+    .btn.success{background:var(--success); border-color:transparent; color:#fff;}
+    .btn.warn{background:var(--warning); border-color:transparent; color:#000;}
+    .btn.danger{background:var(--danger); border-color:transparent; color:#fff;}
+    .pill{display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border-radius:999px; background:var(--border);}
+    .table{width:100%; border-collapse:collapse;}
+    .table th,.table td{border-bottom:1px solid var(--border); padding:8px; text-align:left; vertical-align:top;}
+    .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--border);}
+    .badge.role-chair{background:rgba(59,130,246,.15); color:#93c5fd;}
+    .badge.role-sec{background:rgba(34,197,94,.15); color:#86efac;}
+    .badge.role-mem{background:rgba(245,158,11,.15); color:#fde68a;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono", monospace;}
+
+    /* Thẻ phòng — clickable */
+    .room-card{cursor:pointer; transition:transform .1s ease, box-shadow .1s ease;}
+    .room-card:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.3);}
+
+    /* Popup (modal) */
+    .modal-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,.5);
+      display:flex; align-items:center; justify-content:center; z-index:999;
+    }
+    .modal{background:#0b1220; border:1px solid var(--border); border-radius:12px; width:720px; max-width:95vw; padding:16px;}
+    .modal header{display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:8px; margin-bottom:12px; position:static; backdrop-filter:none;}
+    .modal footer{display:flex; justify-content:flex-end; gap:10px; margin-top:12px;}
+
+    /* Lịch trong Tổng quan */
+    .calendar{border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:8px;}
+    .calendar .grid{display:grid;}
+    .calendar.week .grid{grid-template-columns: 100px repeat(7, 1fr);} /* cột giờ + 7 ngày */
+    .calendar.month .grid{grid-template-columns: repeat(7, 1fr);}
+    .calendar .cell{border-bottom:1px solid var(--border); border-right:1px solid var(--border); padding:6px; min-height:70px;}
+    .calendar .header{background:#0b1220; font-weight:700;}
+    .calendar .event{background:#1f2937; border:1px solid #374151; border-radius:8px; padding:6px; margin:4px 0; font-size:12px;}
+    .calendar .event.meeting{border-color:#60a5fa; background:#0b2a4a;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="brand">📅 Hệ thống đăng ký phòng họp</div>
+  <div id="nav" class="hidden">
+    <button class="nav-btn active" data-tab="dashboard">Tổng quan</button>
+    <button class="nav-btn" data-tab="bookroom">Đăng ký phòng</button>
+    <button class="nav-btn" data-tab="my">Cuộc họp của tôi</button>
+    <button class="nav-btn" data-tab="minutes">Biên bản</button>
+    <button class="nav-btn" data-tab="manage">Quản lý</button>
+  </div>
+  <div class="user" id="userBox"></div>
+</header>
+
+<main>
+  <!-- Đăng nhập -->
+  <section id="auth" class="card">
+    <h2>Đăng nhập</h2>
+    <p class="muted">Chỉ email trong <strong>whitelist</strong> mới vào hệ thống (không gán sẵn vai trò).</p>
+    <div class="row">
+      <div class="col-6">
+        <label>Email</label>
+        <input id="loginEmail" type="email" placeholder="ví dụ: thy@example.com" />
+      </div>
+      <div class="col-6" style="display:flex; align-items:flex-end; gap:8px;">
+        <button class="btn primary" id="btnLogin">Đăng nhập</button>
+        <button class="btn" id="btnAddSampleWl">Nạp whitelist mẫu</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <h3>Whitelist hiện tại</h3>
+      <p class="muted">Các email này có thể đăng nhập:</p>
+      <p><strong>Chuỗi:</strong> <span id="wlPreview"></span></p>
+      <ul id="wlBox"></ul>
+    </div>
+  </section>
+
+  <!-- App -->
+  <section id="app" class="hidden">
+    <!-- Dashboard -->
+    <div id="tab-dashboard" class="card">
+      <h2>Tổng quan</h2>
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <h3>Hôm nay</h3>
+            <p id="todayStatus" class="muted">Đang tải...</p>
+            <div id="todayMeetings" class="list"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card">
+            <h3>Nhắc họp (1 giờ tới)</h3>
+            <p class="muted">Thông báo trình duyệt sẽ nhắc trước 1 giờ nếu bạn là thành viên cuộc họp (Chủ tọa / Thư kí / Thành phần).</p>
+            <div class="card" style="margin-top:8px;">
+              <h4>Trong 1 giờ tới</h4>
+              <p class="muted" id="remind1hSummary">Đang tính...</p>
+              <div id="remind1hList" class="list"></div>
+            </div>
+            <!-- Nhật ký thông báo đã gửi -->
+            <div id="reminders" class="list" style="margin-top:8px;"></div>
+          </div>
+        </div>
+
+        <!-- Lịch ngay trong Tổng quan -->
+        <div class="col-12">
+          <div class="card">
+            <h3>Lịch tổng quan</h3>
+            <div class="row">
+              <div class="col-3">
+                <label>Chế độ</label>
+                <select id="dashCalMode">
+                  <option value="week">Tuần</option>
+                  <option value="month">Tháng</option>
+                </select>
+              </div>
+              <div class="col-3">
+                <label>Phòng</label>
+                <select id="dashCalRoom"></select> <!-- có "Tất cả phòng" -->
+              </div>
+              <div class="col-6" style="display:flex; gap:8px; align-items:flex-end;">
+                <button class="btn" id="dashCalPrev">◀ Trước</button>
+                <button class="btn" id="dashCalNext">Tiếp ▶</button>
+                <button class="btn" id="dashCalToday">Hôm nay</button>
+              </div>
+            </div>
+            <div id="dashCalendarView" class="calendar"></div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card">
+            <h3>Cuộc họp sắp tới (7 ngày)</h3>
+            <table class="table" id="upcomingTable">
+              <thead><tr><th>Tiêu đề</th><th>Thời gian</th><th>Phòng</th><th>Vai trò của tôi</th><th>Calendar</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Đăng ký phòng -->
+    <div id="tab-bookroom" class="card hidden">
+      <h2>Đăng ký phòng</h2>
+      <p class="muted">Bấm vào <strong>thẻ phòng</strong> để đăng ký: thời gian, lý do/tiêu đề, tài liệu (Drive), thành viên + vai trò.</p>
+      <div class="row" id="roomsGrid"></div>
+
+      <div class="card" style="margin-top:16px;">
+        <h3>Cuộc họp/phòng tôi đã đăng ký</h3>
+        <table class="table" id="myBookingsTable">
+          <thead><tr><th>Tiêu đề</th><th>Thời gian</th><th>Phòng</th><th>Tài liệu</th><th>Thành viên</th><th>Calendar</th><th>Xoá</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Cuộc họp của tôi -->
+    <div id="tab-my" class="card hidden">
+      <h2>Cuộc họp của tôi</h2>
+      <table class="table" id="myTable">
+        <thead><tr><th>Tiêu đề</th><th>Thời gian</th><th>Phòng</th><th>Vai trò của tôi</th><th>Tài liệu</th><th>Biên bản</th><th>Calendar</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Biên bản -->
+    <div id="tab-minutes" class="card hidden">
+      <h2>Thêm biên bản họp (chỉ Thư kí)</h2>
+      <div class="row">
+        <div class="col-6"><label>Chọn cuộc họp</label><select id="minutesMeeting"></select></div>
+        <div class="col-6"><label>Link biên bản (Google Drive)</label><input id="minutesUrl" type="url" placeholder="https://drive.google.com/..." /></div>
+      </div>
+      <div style="margin-top:10px;"><button class="btn success" id="btnSaveMinutes">Lưu biên bản</button></div>
+    </div>
+
+    <!-- Quản lý: hiển thị whitelist -->
+    <div id="tab-manage" class="card hidden">
+      <h2>Quản lý — Danh sách email được phép đăng nhập</h2>
+      <p class="muted">Danh sách whitelist (chỉ hiển thị):</p>
+      <div class="card">
+        <p><strong>Tổng số:</strong> <span id="wlCount">0</span></p>
+        <ul id="wlList"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal đăng ký phòng -->
+<div id="bookingModal" class="modal-backdrop hidden">
+  <div class="modal">
+    <header>
+      <h3 id="modalTitle">Đăng ký phòng</h3>
+      <button class="btn danger" id="modalClose">Đóng</button>
+    </header>
+    <div class="row">
+      <div class="col-12"><label>Phòng</label><input id="modalRoomName" type="text" readonly /></div>
+      <div class="col-6"><label>Bắt đầu</label><input id="modalStart" type="datetime-local" /></div>
+      <div class="col-6"><label>Kết thúc</label><input id="modalEnd" type="datetime-local" /></div>
+      <div class="col-12"><label>Lý do / Tiêu đề cuộc họp</label><input id="modalTitleInput" type="text" placeholder="VD: Ôn tập, phỏng vấn, workshop..." /></div>
+
+      <div class="col-12">
+        <label>Tài liệu (Google Drive URL)</label>
+        <div style="display:flex; gap:8px;">
+          <input id="docUrlInput" type="url" placeholder="https://drive.google.com/..." />
+          <button class="btn" id="btnAddDoc">Thêm</button>
+        </div>
+        <div id="docList" class="list" style="margin-top:8px;"></div>
+      </div>
+
+      <div class="col-12">
+        <label>Thành viên & vai trò</label>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <input id="attEmailInput" type="email" placeholder="email thành viên" style="flex:1;" />
+          <select id="attRoleInput">
+            <option value="chair">Chủ tọa</option>
+            <option value="sec">Thư kí</option>
+            <option value="mem">Thành phần</option>
+          </select>
+          <button class="btn" id="btnAddAtt">Thêm thành viên</button>
+        </div>
+        <div id="attList" class="list" style="margin-top:8px;"></div>
+        <p class="muted" style="margin-top:6px;">Lưu ý: email phải có trong whitelist hệ thống.</p>
+      </div>
+    </div>
+    <footer>
+      <button class="btn success" id="modalConfirm">Xác nhận đăng ký</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+/* =============================
+   Seed dữ liệu vào localStorage nếu trống
+   ============================= */
+const seedIfEmpty = (key, value) => {
+  if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify(value));
+};
+seedIfEmpty("whitelist", ["thy@example.com","hieu@example.com","alice@example.com","bob@example.com"]);
+seedIfEmpty("rooms", [
+  { id:"R201", name:"Phòng 201", capacity:12, location:"Toà nhà A - Tầng 2" },
+  { id:"R305", name:"Phòng 305", capacity:20, location:"Toà nhà B - Tầng 3" },
+  { id:"R501", name:"Phòng 501", capacity:8,  location:"Toà nhà C - Tầng 5" }
+]);
+seedIfEmpty("meetings", []); // tất cả đăng ký phòng được lưu thành 'meeting'
+
+/* =============================
+   Store helpers
+   ============================= */
+const store = {
+  getWhitelist(){
+    try { return JSON.parse(localStorage.getItem("whitelist")||"[]"); }
+    catch(e){ console.error("Whitelist parse error", e); return []; }
+  },
+  setWhitelist(list){ localStorage.setItem("whitelist", JSON.stringify(list)); },
+  getRooms(){ return JSON.parse(localStorage.getItem("rooms")||"[]"); },
+  getMeetings(){ return JSON.parse(localStorage.getItem("meetings")||"[]"); },
+  setMeetings(a){ localStorage.setItem("meetings", JSON.stringify(a)); },
+};
+
+const ROLES = {
+  chair: { label: "Chủ tọa", cls: "role-chair" },
+  sec:   { label: "Thư kí",   cls: "role-sec"   },
+  mem:   { label: "Thành phần", cls: "role-mem" }
+};
+
+const state = {
+  userEmail:null,
+  currentRoom:null,
+  docs:[],
+  attendees:[],
+  reminderTimers:[],
+  // Lịch trong Tổng quan
+  dCalMode:"week",
+  dCalAnchor:new Date(),
+  dCalRoom:"*"
+};
+
+/* =============================
+   Tiện ích & format
+   ============================= */
+function fmtDate(d){ return d.toLocaleString("vi-VN",{hour12:false}); }
+function fmtRange(s,e){ return `${fmtDate(s)} — ${fmtDate(e)}`; }
+function uid(){ return Math.random().toString(36).slice(2,10); }
+function rangesConflict(aStart,aEnd,bStart,bEnd){ return (aStart < bEnd) && (aEnd > bStart); }
+function toUTCGCal(dt){
+  const y=dt.getUTCFullYear(), m=String(dt.getUTCMonth()+1).padStart(2,"0"), d=String(dt.getUTCDate()).padStart(2,"0");
+  const hh=String(dt.getUTCHours()).padStart(2,"0"), mm=String(dt.getUTCMinutes()).padStart(2,"0"), ss=String(dt.getUTCSeconds()).padStart(2,"0");
+  return `${y}${m}${d}T${hh}${mm}${ss}Z`;
+}
+function buildGCalLink(meeting){
+  const rooms=store.getRooms(); const room=rooms.find(r=>r.id===meeting.roomId);
+  const s=new Date(meeting.start), e=new Date(meeting.end);
+  const title=encodeURIComponent(meeting.title);
+  const dates=`${toUTCGCal(s)}/${toUTCGCal(e)}`;
+  const loc=encodeURIComponent(room ? `${room.name} - ${room.location}` : "");
+  const detailsText=`Phòng: ${room ? room.name : ""}\nTài liệu: ${meeting.docs.join(", ")}\nThành viên: ${meeting.attendees.map(a=>`${a.email} (${ROLES[a.role].label})`).join(", ")}\nGhi chú: ${meeting.notes||""}\nNhắc: 1 giờ trước (hãy đặt Reminder trong sự kiện).`;
+  return `https://calendar.google.com/calendar/u/0/r/eventedit?text=${title}&dates=${dates}&location=${loc}&details=${encodeURIComponent(detailsText)}`;
+}
+function dayStart(dt){ return new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()); }
+function notify(title, body){
+  if (!("Notification" in window)) return;
+  if (Notification.permission === "granted") new Notification(title,{body});
+}
+
+/* =============================
+   Điều hướng tab (nút)
+   ============================= */
+function showTab(tabName) {
+  document.querySelectorAll(".nav-btn").forEach(x => x.classList.remove("active"));
+  const currentBtn = document.querySelector(`.nav-btn[data-tab="${tabName}"]`);
+  if (currentBtn) currentBtn.classList.add("active");
+  document.querySelectorAll("#app > div").forEach(sec => sec.classList.add("hidden"));
+  const target = document.getElementById("tab-" + tabName);
+  if (target) target.classList.remove("hidden");
+}
+document.getElementById("nav").addEventListener("click", (e) => {
+  const btn = e.target.closest(".nav-btn[data-tab]");
+  if (!btn) return;
+  showTab(btn.getAttribute("data-tab"));
+});
+
+/* =============================
+   Hiển thị whitelist trên màn hình Login
+   ============================= */
+function renderLoginWhitelist() {
+  const wl = store.getWhitelist();
+  document.getElementById("wlPreview").textContent = wl.join(", ");
+  document.getElementById("wlBox").innerHTML = wl.map(e => `<li class="pill">✉️ ${e}</li>`).join("");
+}
+document.addEventListener("DOMContentLoaded", renderLoginWhitelist);
+
+/* Seed nhanh whitelist mẫu (nếu trống) */
+document.getElementById("btnAddSampleWl").addEventListener("click", ()=>{
+  const sample = ["thy@example.com","hieu@example.com","alice@example.com","bob@example.com"];
+  store.setWhitelist(sample);
+  renderLoginWhitelist();
+  alert("Đã nạp whitelist mẫu.");
+});
+
+/* =============================
+   Đăng nhập
+   ============================= */
+document.getElementById("btnLogin").addEventListener("click", () => {
+  const email=(document.getElementById("loginEmail").value||"").trim().toLowerCase();
+  const wl=store.getWhitelist();
+  if (!email){ alert("Vui lòng nhập email"); return; }
+  if (!Array.isArray(wl) || wl.length===0){ alert("Whitelist trống. Hãy nạp whitelist mẫu hoặc cấu hình whitelist trước."); return; }
+  if (!wl.includes(email)){ alert("Email không nằm trong whitelist."); return; }
+
+  startApp(email);
+});
+
+/* Vào app sau khi login */
+function startApp(email){
+  state.userEmail=email;
+
+  // Hiển thị app
+  document.getElementById("auth").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("nav").classList.remove("hidden");
+
+  // User + logout
+  document.getElementById("userBox").innerHTML =
+    `👤 ${email} <button class="btn" id="btnLogout" style="margin-left:8px;">Đăng xuất</button>`;
+  document.getElementById("btnLogout").addEventListener("click", () => location.reload());
+
+  // Render
+  renderRoomsGrid();
+  renderDashboard();
+  renderMyMeetings();
+  renderMyBookingsTable();
+  renderMinutesSelector();
+  renderManage();
+
+  // Lịch trong Tổng quan: khởi tạo select phòng (có "Tất cả phòng")
+  const rooms = store.getRooms();
+  const dashRoomSel = document.getElementById("dashCalRoom");
+  dashRoomSel.innerHTML = `<option value="*">Tất cả phòng</option>` + rooms.map(r=>`<option value="${r.id}">${r.name}</option>`).join("");
+  dashRoomSel.value = "*";
+  state.dCalRoom = "*";
+  renderDashboardCalendar();
+
+  // Controls cho lịch
+  document.getElementById("dashCalMode").addEventListener("change", (e)=>{ state.dCalMode = e.target.value; renderDashboardCalendar(); });
+  document.getElementById("dashCalRoom").addEventListener("change", (e)=>{ state.dCalRoom = e.target.value; renderDashboardCalendar(); });
+  document.getElementById("dashCalPrev").addEventListener("click", ()=> shiftDashboardCalendar(-1));
+  document.getElementById("dashCalNext").addEventListener("click", ()=> shiftDashboardCalendar(1));
+  document.getElementById("dashCalToday").addEventListener("click", ()=>{ state.dCalAnchor = new Date(); renderDashboardCalendar(); });
+
+  // Permissions
+  if ("Notification" in window && Notification.permission!=="granted") Notification.requestPermission();
+
+  // Mở mặc định
+  showTab("dashboard");
+}
+
+/* =============================
+   Dashboard (Hôm nay + Nhắc 1h + Lịch + Bảng 7d)
+   ============================= */
+function renderDashboard(){
+  const meetings=store.getMeetings().sort((a,b)=>new Date(a.start)-new Date(b.start));
+  const today=dayStart(new Date());
+  const my=meetings.filter(m=>m.attendees.some(a=>a.email===state.userEmail));
+
+  // Hôm nay
+  const todayList=my.filter(m=> dayStart(new Date(m.start)).getTime()===today.getTime());
+  document.getElementById("todayStatus").textContent =
+    todayList.length ? `Hôm nay bạn có ${todayList.length} cuộc họp/đăng ký phòng.` : "Hôm nay bạn không có cuộc họp nào.";
+  document.getElementById("todayMeetings").innerHTML = todayList.map(m=>{
+    const rooms=store.getRooms(); const room=rooms.find(r=>r.id===m.roomId);
+    const myRole = m.attendees.find(a=>a.email===state.userEmail)?.role || "mem";
+    return `<div class="pill"><strong>${m.title}</strong> — ${fmtRange(new Date(m.start), new Date(m.end))}
+      <span class="badge">${room?room.name:""}</span>
+      <span class="badge ${ROLES[myRole].cls}">${ROLES[myRole].label}</span></div>`;
+  }).join("");
+
+  // Nhắc trong 1 giờ tới (UI summary + list theo phòng)
+  renderReminders1h(my);
+
+  // Sắp tới 7 ngày (bảng chi tiết)
+  const now=new Date(), in7=new Date(now.getTime()+7*24*3600*1000);
+  const upcoming=my.filter(m=>new Date(m.start)>=now && new Date(m.start)<=in7);
+  const tbody=document.querySelector("#upcomingTable tbody");
+  tbody.innerHTML = upcoming.map(m=>{
+    const rooms=store.getRooms(); const room=rooms.find(r=>r.id===m.roomId);
+    const myRole = m.attendees.find(a=>a.email===state.userEmail)?.role || "mem";
+    return `<tr>
+      <td>${m.title}</td>
+      <td>${fmtRange(new Date(m.start), new Date(m.end))}</td>
+      <td>${room?room.name:""}</td>
+      <td><span class="badge ${ROLES[myRole].cls}">${ROLES[myRole].label}</span></td>
+      <td>${buildGCalLink(m)}Add to Google Calendar</a></td>
+    </tr>`;
+  }).join("");
+
+  // (re)schedule 1h reminders
+  document.getElementById("reminders").innerHTML="";
+  my.forEach(scheduleReminderFor);
+
+  // Cập nhật lịch
+  renderDashboardCalendar();
+}
+
+function renderReminders1h(myMeetings){
+  const now = new Date();
+  const in1h = new Date(now.getTime() + 60*60*1000);
+  const rooms=store.getRooms();
+  const within1h = myMeetings.filter(m => new Date(m.start) > now && new Date(m.start) <= in1h);
+
+  const rooms1h = Array.from(new Set(within1h.map(m => m.roomId)));
+  document.getElementById("remind1hSummary").textContent =
+    `Trong 1 giờ tới: ${within1h.length} cuộc họp • ${rooms1h.length} phòng`;
+
+  document.getElementById("remind1hList").innerHTML = within1h.map(m => {
+    const room = rooms.find(r => r.id === m.roomId);
+    const myRole = m.attendees.find(a => a.email === state.userEmail)?.role || "mem";
+    return `<div class="pill">
+      🔔 <strong>${m.title}</strong> — bắt đầu ${fmtDate(new Date(m.start))}
+      <span class="badge">${room ? room.name : m.roomId}</span>
+      <span class="badge ${ROLES[myRole].cls}">${ROLES[myRole].label}</span>
+    </div>`;
+  }).join("");
+}
+
+/* =============================
+   Lịch trong Tổng quan (Tuần/Tháng, lọc phòng)
+   ============================= */
+function renderDashboardCalendar(){
+  const container = document.getElementById("dashCalendarView");
+  const mode = state.dCalMode;
+  const roomId = state.dCalRoom; // "*" = tất cả phòng
+  const meetingsAll = store.getMeetings();
+  const meetings = roomId==="*" ? meetingsAll : meetingsAll.filter(m=>m.roomId===roomId);
+
+  if (mode==="week"){
+    container.className = "calendar week";
+    renderWeekCalendar(container, state.dCalAnchor, meetings);
+  } else {
+    container.className = "calendar month";
+    renderMonthCalendar(container, state.dCalAnchor, meetings);
+  }
+}
+function shiftDashboardCalendar(delta){
+  if (state.dCalMode==="week"){
+    state.dCalAnchor = new Date(state.dCalAnchor.getTime() + delta*7*24*3600*1000);
+  } else {
+    const a=state.dCalAnchor; state.dCalAnchor = new Date(a.getFullYear(), a.getMonth()+delta, 1);
+  }
+  renderDashboardCalendar();
+}
+function renderWeekCalendar(container, anchor, meetings){
+  // Tính thứ Hai của tuần
+  const d=new Date(anchor); const day=d.getDay(); const diff=(day+6)%7; // Mon=0...Sun=6
+  const monday = new Date(d.getFullYear(), d.getMonth(), d.getDate()-diff);
+  const days = Array.from({length:7}, (_,i)=> new Date(monday.getFullYear(), monday.getMonth(), monday.getDate()+i));
+  const hours = Array.from({length:11}, (_,i)=> i+8); // 8h -> 18h (demo)
+  const header = `<div class="grid">
+    <div class="cell header">Giờ</div>
+    ${days.map(dt=>`<div class="cell header">${dt.toLocaleDateString("vi-VN",{weekday:"short", day:"2-digit", month:"2-digit"})}</div>`).join("")}
+  </div>`;
+  let grid = `<div class="grid">`;
+  hours.forEach(h=>{
+    grid += `<div class="cell"><strong>${String(h).padStart(2,"0")}:00</strong></div>`;
+    days.forEach(dt=>{
+      const cellItems = [];
+      const cellStart = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), h, 0, 0);
+      const cellEnd   = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), h+1, 0, 0);
+      meetings.forEach(m=>{
+        const ms=new Date(m.start), me=new Date(m.end);
+        if (rangesConflict(cellStart,cellEnd,ms,me)) {
+          const room = store.getRooms().find(r=>r.id===m.roomId);
+          cellItems.push(`<div class="event meeting">📌 ${m.title}<br><span class="muted">${room?room.name:""} • ${fmtRange(ms,me)}</span></div>`);
+        }
+      });
+      grid += `<div class="cell">${cellItems.join("")}</div>`;
+    });
+  });
+  grid += `</div>`;
+  container.innerHTML = header + grid;
+}
+function renderMonthCalendar(container, anchor, meetings){
+  const first = new Date(anchor.getFullYear(), anchor.getMonth(), 1);
+  const startGrid = new Date(first);
+  startGrid.setDate(1 - ((first.getDay()+6)%7)); // Monday-based
+  const totalCells = 6*7; // 6 rows x 7 days
+  const header = `<div class="grid">
+    ${["T2","T3","T4","T5","T6","T7","CN"].map(d=>`<div class="cell header">${d}</div>`).join("")}
+  </div>`;
+  let grid = `<div class="grid">`;
+  for (let i=0;i<totalCells;i++){
+    const dt = new Date(startGrid.getFullYear(), startGrid.getMonth(), startGrid.getDate()+i);
+    const inMonth = dt.getMonth()===anchor.getMonth();
+    const items=[];
+    meetings.forEach(m=>{
+      const ms=new Date(m.start), me=new Date(m.end);
+      if (dayStart(ms).getTime()===dayStart(dt).getTime()){
+        const room = store.getRooms().find(r=>r.id===m.roomId);
+        items.push(`<div class="event meeting">📌 ${m.title}<br><span class="muted">${room?room.name:""} • ${ms.toLocaleTimeString("vi-VN",{hour:'2-digit',minute:'2-digit'})}-${me.toLocaleTimeString("vi-VN",{hour:'2-digit',minute:'2-digit'})}</span></div>`);
+      }
+    });
+    grid += `<div class="cell" style="opacity:${inMonth?1:.5}">
+      <div style="font-weight:700; margin-bottom:4px;">${dt.getDate()}</div>
+      ${items.join("")}
+    </div>`;
+  }
+  grid += `</div>`;
+  container.innerHTML = header + grid;
+}
+
+/* =============================
+   Cuộc họp của tôi
+   ============================= */
+function renderMyMeetings(){
+  const meetings=store.getMeetings();
+  const rooms=store.getRooms();
+  const my=meetings.filter(m=>m.attendees.some(a=>a.email===state.userEmail));
+  const tbody=document.querySelector("#myTable tbody");
+  tbody.innerHTML = my.map(m=>{
+    const room=rooms.find(r=>r.id===m.roomId);
+    const myRole = m.attendees.find(a=>a.email===state.userEmail)?.role || "mem";
+    return `<tr>
+      <td>${m.title}</td>
+      <td>${fmtRange(new Date(m.start), new Date(m.end))}</td>
+      <td>${room?room.name:""}</td>
+      <td><span class="badge ${ROLES[myRole].cls}">${ROLES[myRole].label}</span></td>
+      <td>${m.docs.map(u=>`${u}Tài liệu</a>`).join(" ") || '<span class="muted">—</span>'}</td>
+      <td>${m.minutesUrl ? `${m.minutesUrl}Biên bản</a>` : `<span class="muted">Chưa có</span>`}</td>
+      <td>${buildGCalLink(m)}Add to Calendar</a></td>
+    </tr>`;
+  }).join("");
+}
+
+/* =============================
+   NHẮc HỌP 1 GIỜ TRƯỚC (Notification)
+   ============================= */
+function scheduleReminderFor(meeting){
+  state.reminderTimers = state.reminderTimers.filter(t=>{ if (t.id===meeting.id){ clearTimeout(t.timer); return false; } return true; });
+  const start=new Date(meeting.start);
+  const delta = start.getTime() - Date.now() - 60*60*1000;
+  if (delta<=0) return;
+  const amIn = meeting.attendees.some(a=>a.email===state.userEmail); // áp dụng như nhau cho mọi vai trò
+  if (!amIn) return;
+  const timer=setTimeout(()=>{
+    const rooms=store.getRooms(); const room=rooms.find(r=>r.id===meeting.roomId);
+    notify("Nhắc họp", `${meeting.title} (phòng ${room?room.name:meeting.roomId}) bắt đầu lúc ${fmtDate(start)} — nhắc trước 1 giờ`);
+    const r=document.getElementById("reminders");
+    const div=document.createElement("div"); div.className="pill";
+    div.innerHTML=`🔔 Nhắc: ${meeting.title} — ${fmtDate(start)} • <span class="badge">${room?room.name:""}</span>`;
+    r.appendChild(div);
+  }, delta);
+  state.reminderTimers.push({id:meeting.id, timer});
+}
+
+/* =============================
+   Đăng ký phòng (thẻ + modal)
+   ============================= */
+function renderRoomsGrid(){
+  const rooms = store.getRooms();
+  const grid = document.getElementById("roomsGrid");
+  grid.innerHTML = "";
+  rooms.forEach(r => {
+    const col = document.createElement("div"); col.className = "col-4";
+    col.innerHTML = `
+      <div class="card room-card" data-room-id="${r.id}">
+        <h3>${r.name}</h3>
+        <p class="muted">ID: <span class="mono">${r.id}</span></p>
+        <p>Vị trí: ${r.location}</p>
+        <p>Sức chứa: <strong>${r.capacity}</strong></p>
+        <div style="margin-top:8px;">
+          <button class="btn primary">Đăng ký phòng này</button>
+        </div>
+      </div>`;
+    grid.appendChild(col);
+  });
+
+  grid.addEventListener("click", (e) => {
+    const card = e.target.closest(".room-card");
+    if (!card) return;
+    const roomId = card.getAttribute("data-room-id");
+    const room = store.getRooms().find(x => x.id === roomId);
+    if (!room) { alert("Không tìm thấy phòng."); return; }
+    openBookingModal(room);
+  });
+}
+
+// Modal logic & form data
+const modal = document.getElementById("bookingModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalRoomName = document.getElementById("modalRoomName");
+const modalStart = document.getElementById("modalStart");
+const modalEnd = document.getElementById("modalEnd");
+const modalTitleInput = document.getElementById("modalTitleInput");
+
+// Docs
+const docUrlInput = document.getElementById("docUrlInput");
+const docList = document.getElementById("docList");
+
+// Attendees
+const attEmailInput = document.getElementById("attEmailInput");
+const attRoleInput  = document.getElementById("attRoleInput");
+const attList = document.getElementById("attList");
+
+document.getElementById("modalClose").addEventListener("click", closeBookingModal);
+document.getElementById("modalConfirm").addEventListener("click", confirmBooking);
+document.getElementById("btnAddDoc").addEventListener("click", addDoc);
+document.getElementById("btnAddAtt").addEventListener("click", addAtt);
+
+function addDoc(){
+  const url=(docUrlInput.value||"").trim();
+  if (!url){ alert("Nhập link tài liệu (Google Drive)"); return; }
+  state.docs.push(url);
+  docUrlInput.value="";
+  renderDocs();
+}
+function renderDocs(){
+  docList.innerHTML = state.docs.map((u,i)=>`
+    <div class="pill"><span>📄</span> ${u}${u}</a>
+      <button class="btn danger" style="padding:4px 8px;margin-left:6px;" onclick="removeDoc(${i})">X</button>
+    </div>`).join("");
+}
+function removeDoc(i){ state.docs.splice(i,1); renderDocs(); }
+
+function addAtt(){
+  const email=(attEmailInput.value||"").trim().toLowerCase();
+  const role=attRoleInput.value;
+  const wl=store.getWhitelist();
+  if (!email){ alert("Nhập email thành viên"); return; }
+  if (!wl.includes(email)){ alert("Email này chưa trong whitelist hệ thống"); return; }
+  if (role==="chair" && state.attendees.some(a=>a.role==="chair")){ alert("Mỗi cuộc họp chỉ 1 Chủ tọa."); return; }
+  state.attendees.push({email,role});
+  attEmailInput.value=""; renderAttendees();
+}
+function renderAttendees(){
+  attList.innerHTML = state.attendees.map((a,i)=>`
+    <div class="pill"><span>👤 ${a.email}</span>
+      <span class="badge ${ROLES[a.role].cls}">${ROLES[a.role].label}</span>
+      <button class="btn danger" style="padding:4px 8px;margin-left:6px;" onclick="removeAtt(${i})">X</button>
+    </div>`).join("");
+}
+function removeAtt(i){ state.attendees.splice(i,1); renderAttendees(); }
+
+function openBookingModal(room){
+  state.currentRoom = room;
+  state.docs = [];
+  state.attendees = [];
+  modalTitle.textContent = `Đăng ký: ${room.name}`;
+  modalRoomName.value = `${room.name} (${room.location}) • Sức chứa ${room.capacity}`;
+  modalStart.value = ""; modalEnd.value = ""; modalTitleInput.value="";
+  renderDocs(); renderAttendees();
+  modal.classList.remove("hidden");
+}
+function closeBookingModal(){
+  modal.classList.add("hidden");
+}
+
+function confirmBooking(){
+  const room = state.currentRoom;
+  if (!room){ alert("Lỗi: chưa chọn phòng."); return; }
+
+  const startStr = modalStart.value;
+  const endStr = modalEnd.value;
+  const title = (modalTitleInput.value || "").trim();
+
+  if (!startStr || !endStr){ alert("Chọn thời gian bắt đầu/kết thúc."); return; }
+  const start = new Date(startStr);
+  const end = new Date(endStr);
+  if (isNaN(start) || isNaN(end) || end <= start){ alert("Thời gian không hợp lệ."); return; }
+  if (!title){ alert("Nhập lý do/tiêu đề cuộc họp."); return; }
+  // Bắt buộc có ít nhất 1 Thư kí để sau này thêm biên bản
+  if (!state.attendees.some(a=>a.role==="sec")){ alert("Cần ít nhất 1 Thư kí trong cuộc họp/đăng ký phòng."); return; }
+  // Người tạo auto tham gia nếu chưa có
+  if (!state.attendees.some(a=>a.email===state.userEmail)) state.attendees.push({email:state.userEmail, role:"mem"});
+
+  const meetings=store.getMeetings();
+  // Xung đột cùng phòng
+  const conflict = meetings.some(m => m.roomId===room.id && rangesConflict(start,end,new Date(m.start),new Date(m.end)));
+  if (conflict){ alert("Khung giờ này đã trùng với cuộc họp/đăng ký phòng khác. Vui lòng chọn khung giờ khác."); return; }
+
+  const meeting = {
+    id: uid(),
+    title,
+    start: start.toISOString(),
+    end: end.toISOString(),
+    roomId: room.id,
+    docs: [...state.docs],
+    attendees: [...state.attendees],
+    notes: "",
+    creator: state.userEmail,
+    minutesUrl: null
+  };
+  meetings.push(meeting); store.setMeetings(meetings);
+
+  scheduleReminderFor(meeting);
+  alert("Đã đăng ký phòng thành công!");
+  closeBookingModal();
+  renderDashboard();
+  renderMyMeetings();
+  renderMyBookingsTable();
+  renderMinutesSelector();
+}
+
+/* =============================
+   Bảng “Cuộc họp/phòng tôi đã đăng ký”
+   ============================= */
+function renderMyBookingsTable(){
+  const rooms=store.getRooms();
+  const meetings = store.getMeetings().filter(m=>m.creator===state.userEmail).sort((a,b)=>new Date(a.start)-new Date(b.start));
+  const tbody = document.querySelector("#myBookingsTable tbody");
+  tbody.innerHTML = meetings.map(m=>{
+    const room=rooms.find(r=>r.id===m.roomId);
+    const members=m.attendees.map(a=>`<span class="badge ${ROLES[a.role].cls}">${a.email} • ${ROLES[a.role].label}</span>`).join(" ");
+    return `<tr>
+      <td>${m.title}</td>
+      <td>${fmtRange(new Date(m.start), new Date(m.end))}</td>
+      <td>${room ? room.name : m.roomId}</td>
+      <td>${m.docs.map(u=>`${u}Tài liệu</a>`).join(" ") || '<span class="muted">—</span>'}</td>
+      <td>${members}</td>
+      <td>${buildGCalLink(m)}Add to Calendar</a></td>
+      <td><button class="btn danger" onclick="deleteMyBooking('${m.id}')">Xoá</button></td>
+    </tr>`;
+  }).join("");
+}
+function deleteMyBooking(id){
+  const meetings=store.getMeetings();
+  const idx=meetings.findIndex(m=>m.id===id && m.creator===state.userEmail);
+  if (idx<0){ alert("Không tìm thấy hoặc bạn không phải người tạo."); return; }
+  meetings.splice(idx,1); store.setMeetings(meetings);
+  renderMyBookingsTable(); renderDashboard(); renderMyMeetings(); renderMinutesSelector();
+}
+
+/* =============================
+   Biên bản (chỉ Thư kí)
+   ============================= */
+function renderMinutesSelector(){
+  const meetings=store.getMeetings();
+  const secs=meetings.filter(m=>m.attendees.some(a=>a.email===state.userEmail && a.role==="sec"));
+  const sel=document.getElementById("minutesMeeting");
+  sel.innerHTML = secs.map(m=>`<option value="${m.id}">${m.title} — ${fmtDate(new Date(m.start))}</option>`).join("");
+}
+document.getElementById("btnSaveMinutes").addEventListener("click", ()=>{
+  const mid=document.getElementById("minutesMeeting").value;
+  const url=(document.getElementById("minutesUrl").value||"").trim();
+  if (!mid){ alert("Chọn cuộc họp"); return; }
+  if (!url){ alert("Nhập link biên bản (Google Drive)"); return; }
+  const meetings=store.getMeetings();
+  const idx=meetings.findIndex(m=>m.id===mid);
+  if (idx<0){ alert("Không tìm thấy cuộc họp"); return; }
+  const isSec=meetings[idx].attendees.some(a=>a.email===state.userEmail && a.role==="sec");
+  if (!isSec){ alert("Chỉ Thư kí của cuộc họp mới được thêm biên bản."); return; }
+  meetings[idx].minutesUrl=url; store.setMeetings(meetings);
+  alert("Đã lưu biên bản!");
+  document.getElementById("minutesUrl").value="";
+  renderMyMeetings();
+});
+
+/* =============================
+   Quản lý — hiển thị whitelist
+   ============================= */
+function renderManage(){
+  const wl = store.getWhitelist();
+  document.getElementById("wlCount").textContent = wl.length;
+  const ul = document.getElementById("wlList");
+  ul.innerHTML = wl.map(e => `<li class="pill">✉️ ${e}</li>`).join("");
+}
+</script>
+</body>
+</html>
