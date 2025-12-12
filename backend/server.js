@@ -64,6 +64,14 @@ const startServer = async () => {
       console.log('✅ Default admin user created (admin@meetingroom.com / admin123)');
     }
 
+    // Auto-seed rooms if none exist
+    try {
+      const { seedIfEmpty } = require('./seeds/seedRoomsAuto');
+      await seedIfEmpty();
+    } catch (e) {
+      console.warn('Seed rooms skipped or failed:', e.message || e);
+    }
+
     app.listen(PORT, () => {
       console.log(`🚀 Server is running on port ${PORT}`);
       console.log(`📱 Environment: ${process.env.NODE_ENV}`);

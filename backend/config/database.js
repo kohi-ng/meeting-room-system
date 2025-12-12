@@ -24,12 +24,14 @@ if (isValidPostgresUrl) {
   });
   console.log('🗄️  Using PostgreSQL');
 } else {
-  // Fallback to in-memory SQLite for local development
-  sequelize = new Sequelize('sqlite::memory:', {
+  // Fallback to file-based SQLite for local development (persistent)
+  const storagePath = path.join(__dirname, '../../meeting_room.db');
+  sequelize = new Sequelize({
     dialect: 'sqlite',
+    storage: storagePath,
     logging: false
   });
-  console.log('💾 Using in-memory SQLite (data will be lost on restart)');
+  console.log(`💾 Using SQLite file at ${storagePath}`);
 }
 
 const testConnection = async () => {
