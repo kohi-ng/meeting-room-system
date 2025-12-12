@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/DashboardV2';
 import GoogleCallback from './pages/GoogleCallback';
 import PrivateRoute from './components/PrivateRoute';
 
