@@ -26,10 +26,11 @@ exports.createRoom = async (req, res) => {
       room
     });
   } catch (error) {
-    console.error('Create room error:', error);
+    console.error('Create room error:', error.stack || error);
+    console.error('Request body:', req.body);
     res.status(500).json({
       success: false,
-      message: 'Lỗi khi tạo phòng họp'
+      message: process.env.NODE_ENV === 'development' ? error.message : 'Lỗi khi tạo phòng họp'
     });
   }
 };
