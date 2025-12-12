@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/DashboardV2';
 import GoogleCallback from './pages/GoogleCallback';
 import PrivateRoute from './components/PrivateRoute';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const theme = createTheme({
   palette: {
@@ -19,8 +20,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
+        <ErrorBoundary>
+          <BrowserRouter>
+            <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/auth/callback" element={<GoogleCallback />} />
@@ -33,8 +35,9 @@ function App() {
               }
             />
             <Route path="/" element={<Navigate to="/login" replace />} />
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </ErrorBoundary>
       </AuthProvider>
     </ThemeProvider>
   );
