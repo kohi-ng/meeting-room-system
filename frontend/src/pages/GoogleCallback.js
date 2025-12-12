@@ -9,21 +9,32 @@ import { useAuth } from '../context/AuthContext';
 function GoogleCallback() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { handleGoogleCallback } = useAuth();
+  const { handleGoogleCallback, loading, isAuthenticated } = useAuth();
 
   useEffect(() => {
     const token = searchParams.get('token');
     const error = searchParams.get('error');
 
     if (token) {
+      // store token and wait for AuthProvider to finish loading user
       handleGoogleCallback(token);
-      navigate('/dashboard');
-    } else if (error) {
-      navigate('/login?error=' + error);
-    } else {
-      navigate('/login');
+      return;
     }
-  }, [searchParams, navigate, handleGoogleCallback]);
+
+    if (error) {
+      navigate('/login?error=' + error);
+      return;
+    }
+
+    navigate('/login');
+  }, [searchParams, handleGoogleCallback, navigate]);
+
+  // When auth finished loading after token set, redirect accordingly
+  useEffect(() => {
+    if (loading) return;
+    if (isAuthenticated) navigate('/dashboard');
+    else navigate('/login');
+  }, [loading, isAuthenticated, navigate]);
 
   return (
     <Container>

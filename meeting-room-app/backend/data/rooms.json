@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "A101",
+    "name": "Phòng A101",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A102",
+    "name": "Phòng A102",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A103",
+    "name": "Phòng A103",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A104",
+    "name": "Phòng A104",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A105",
+    "name": "Phòng A105",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A106",
+    "name": "Phòng A106",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A107",
+    "name": "Phòng A107",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A108",
+    "name": "Phòng A108",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A109",
+    "name": "Phòng A109",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A110",
+    "name": "Phòng A110",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A111",
+    "name": "Phòng A111",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A112",
+    "name": "Phòng A112",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A113",
+    "name": "Phòng A113",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A114",
+    "name": "Phòng A114",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A115",
+    "name": "Phòng A115",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A116",
+    "name": "Phòng A116",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A117",
+    "name": "Phòng A117",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A118",
+    "name": "Phòng A118",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A119",
+    "name": "Phòng A119",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A120",
+    "name": "Phòng A120",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A121",
+    "name": "Phòng A121",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A122",
+    "name": "Phòng A122",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A123",
+    "name": "Phòng A123",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A124",
+    "name": "Phòng A124",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A125",
+    "name": "Phòng A125",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A126",
+    "name": "Phòng A126",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A127",
+    "name": "Phòng A127",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A128",
+    "name": "Phòng A128",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A129",
+    "name": "Phòng A129",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A130",
+    "name": "Phòng A130",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A131",
+    "name": "Phòng A131",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A132",
+    "name": "Phòng A132",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A133",
+    "name": "Phòng A133",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A134",
+    "name": "Phòng A134",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A135",
+    "name": "Phòng A135",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A136",
+    "name": "Phòng A136",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A137",
+    "name": "Phòng A137",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A138",
+    "name": "Phòng A138",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A139",
+    "name": "Phòng A139",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A140",
+    "name": "Phòng A140",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A141",
+    "name": "Phòng A141",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A142",
+    "name": "Phòng A142",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A143",
+    "name": "Phòng A143",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A144",
+    "name": "Phòng A144",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A145",
+    "name": "Phòng A145",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A146",
+    "name": "Phòng A146",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A147",
+    "name": "Phòng A147",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A148",
+    "name": "Phòng A148",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A149",
+    "name": "Phòng A149",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A150",
+    "name": "Phòng A150",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A201",
+    "name": "Phòng A201",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A202",
+    "name": "Phòng A202",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A203",
+    "name": "Phòng A203",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A204",
+    "name": "Phòng A204",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A205",
+    "name": "Phòng A205",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A206",
+    "name": "Phòng A206",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A207",
+    "name": "Phòng A207",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A208",
+    "name": "Phòng A208",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A209",
+    "name": "Phòng A209",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A210",
+    "name": "Phòng A210",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A211",
+    "name": "Phòng A211",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A212",
+    "name": "Phòng A212",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A213",
+    "name": "Phòng A213",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A214",
+    "name": "Phòng A214",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A215",
+    "name": "Phòng A215",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A216",
+    "name": "Phòng A216",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A217",
+    "name": "Phòng A217",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A218",
+    "name": "Phòng A218",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A219",
+    "name": "Phòng A219",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A220",
+    "name": "Phòng A220",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A221",
+    "name": "Phòng A221",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A222",
+    "name": "Phòng A222",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A223",
+    "name": "Phòng A223",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A224",
+    "name": "Phòng A224",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A225",
+    "name": "Phòng A225",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A226",
+    "name": "Phòng A226",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A227",
+    "name": "Phòng A227",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A228",
+    "name": "Phòng A228",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A229",
+    "name": "Phòng A229",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A230",
+    "name": "Phòng A230",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A231",
+    "name": "Phòng A231",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A232",
+    "name": "Phòng A232",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A233",
+    "name": "Phòng A233",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A234",
+    "name": "Phòng A234",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A235",
+    "name": "Phòng A235",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A236",
+    "name": "Phòng A236",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A237",
+    "name": "Phòng A237",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A238",
+    "name": "Phòng A238",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A239",
+    "name": "Phòng A239",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A240",
+    "name": "Phòng A240",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A241",
+    "name": "Phòng A241",
+    "capacity": 7,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A242",
+    "name": "Phòng A242",
+    "capacity": 8,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "A243",
+    "name": "Phòng A243",
+    "capacity": 9,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "A244",
+    "name": "Phòng A244",
+    "capacity": 10,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "A245",
+    "name": "Phòng A245",
+    "capacity": 11,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "A246",
+    "name": "Phòng A246",
+    "capacity": 12,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "A247",
+    "name": "Phòng A247",
+    "capacity": 13,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "A248",
+    "name": "Phòng A248",
+    "capacity": 14,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "A249",
+    "name": "Phòng A249",
+    "capacity": 15,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "A250",
+    "name": "Phòng A250",
+    "capacity": 6,
+    "location": "Tòa nhà A - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B101",
+    "name": "Phòng B101",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B102",
+    "name": "Phòng B102",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B103",
+    "name": "Phòng B103",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B104",
+    "name": "Phòng B104",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B105",
+    "name": "Phòng B105",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B106",
+    "name": "Phòng B106",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B107",
+    "name": "Phòng B107",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B108",
+    "name": "Phòng B108",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B109",
+    "name": "Phòng B109",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B110",
+    "name": "Phòng B110",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B111",
+    "name": "Phòng B111",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B112",
+    "name": "Phòng B112",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B113",
+    "name": "Phòng B113",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B114",
+    "name": "Phòng B114",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B115",
+    "name": "Phòng B115",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B116",
+    "name": "Phòng B116",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B117",
+    "name": "Phòng B117",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B118",
+    "name": "Phòng B118",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B119",
+    "name": "Phòng B119",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B120",
+    "name": "Phòng B120",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B121",
+    "name": "Phòng B121",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B122",
+    "name": "Phòng B122",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B123",
+    "name": "Phòng B123",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B124",
+    "name": "Phòng B124",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B125",
+    "name": "Phòng B125",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B126",
+    "name": "Phòng B126",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B127",
+    "name": "Phòng B127",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B128",
+    "name": "Phòng B128",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B129",
+    "name": "Phòng B129",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B130",
+    "name": "Phòng B130",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B131",
+    "name": "Phòng B131",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B132",
+    "name": "Phòng B132",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B133",
+    "name": "Phòng B133",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B134",
+    "name": "Phòng B134",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B135",
+    "name": "Phòng B135",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B136",
+    "name": "Phòng B136",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B137",
+    "name": "Phòng B137",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B138",
+    "name": "Phòng B138",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B139",
+    "name": "Phòng B139",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B140",
+    "name": "Phòng B140",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B141",
+    "name": "Phòng B141",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B142",
+    "name": "Phòng B142",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B143",
+    "name": "Phòng B143",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B144",
+    "name": "Phòng B144",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B145",
+    "name": "Phòng B145",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B146",
+    "name": "Phòng B146",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B147",
+    "name": "Phòng B147",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B148",
+    "name": "Phòng B148",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B149",
+    "name": "Phòng B149",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B150",
+    "name": "Phòng B150",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 1",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B201",
+    "name": "Phòng B201",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B202",
+    "name": "Phòng B202",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B203",
+    "name": "Phòng B203",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B204",
+    "name": "Phòng B204",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B205",
+    "name": "Phòng B205",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B206",
+    "name": "Phòng B206",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B207",
+    "name": "Phòng B207",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B208",
+    "name": "Phòng B208",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B209",
+    "name": "Phòng B209",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B210",
+    "name": "Phòng B210",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B211",
+    "name": "Phòng B211",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B212",
+    "name": "Phòng B212",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B213",
+    "name": "Phòng B213",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B214",
+    "name": "Phòng B214",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B215",
+    "name": "Phòng B215",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B216",
+    "name": "Phòng B216",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B217",
+    "name": "Phòng B217",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B218",
+    "name": "Phòng B218",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B219",
+    "name": "Phòng B219",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B220",
+    "name": "Phòng B220",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B221",
+    "name": "Phòng B221",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B222",
+    "name": "Phòng B222",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B223",
+    "name": "Phòng B223",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B224",
+    "name": "Phòng B224",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B225",
+    "name": "Phòng B225",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B226",
+    "name": "Phòng B226",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B227",
+    "name": "Phòng B227",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B228",
+    "name": "Phòng B228",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B229",
+    "name": "Phòng B229",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B230",
+    "name": "Phòng B230",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B231",
+    "name": "Phòng B231",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B232",
+    "name": "Phòng B232",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B233",
+    "name": "Phòng B233",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B234",
+    "name": "Phòng B234",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B235",
+    "name": "Phòng B235",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B236",
+    "name": "Phòng B236",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B237",
+    "name": "Phòng B237",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B238",
+    "name": "Phòng B238",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B239",
+    "name": "Phòng B239",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B240",
+    "name": "Phòng B240",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B241",
+    "name": "Phòng B241",
+    "capacity": 7,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B242",
+    "name": "Phòng B242",
+    "capacity": 8,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  },
+  {
+    "id": "B243",
+    "name": "Phòng B243",
+    "capacity": 9,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Touchable board",
+      "HDMI"
+    ]
+  },
+  {
+    "id": "B244",
+    "name": "Phòng B244",
+    "capacity": 10,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Video conferencing",
+      "Microphone"
+    ]
+  },
+  {
+    "id": "B245",
+    "name": "Phòng B245",
+    "capacity": 11,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Conference phone",
+      "Whiteboard"
+    ]
+  },
+  {
+    "id": "B246",
+    "name": "Phòng B246",
+    "capacity": 12,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "HDMI",
+      "Projector"
+    ]
+  },
+  {
+    "id": "B247",
+    "name": "Phòng B247",
+    "capacity": 13,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Microphone",
+      "Television"
+    ]
+  },
+  {
+    "id": "B248",
+    "name": "Phòng B248",
+    "capacity": 14,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Whiteboard",
+      "Touchable board"
+    ]
+  },
+  {
+    "id": "B249",
+    "name": "Phòng B249",
+    "capacity": 15,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Projector",
+      "Video conferencing"
+    ]
+  },
+  {
+    "id": "B250",
+    "name": "Phòng B250",
+    "capacity": 6,
+    "location": "Tòa nhà B - Tầng 2",
+    "features": [
+      "Television",
+      "Conference phone"
+    ]
+  }
+]
